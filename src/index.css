@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+body,html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y:auto;
+    
+}
+@layer base{
+    p{
+        @apply text-xs 
+    }
+    h3{
+        @apply text-lg font-bold
+    }
+}
