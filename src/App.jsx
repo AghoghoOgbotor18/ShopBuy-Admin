@@ -25,7 +25,7 @@ function App() {
       <div className={`flex min-h-screen relative ${theme === "dark" ? "bg-slate-800" : "bg-zinc-200"}`}>
         <Sidebar />
 
-        <main className={`flex-1 transition-all duration-300 w-full ${isOpen ? "ml-30 md:ml-65" : "ml-15 md:ml-25"}`}>
+        <main className={`flex-1 transition-all duration-300 w-full ${isOpen ? "ml-30 md:ml-65" : "ml-15 md:ml-15"}`}>
           {/* Wrap Routes in Suspense */}
           <Suspense fallback={<p>Loading...</p>}>
             <Routes>

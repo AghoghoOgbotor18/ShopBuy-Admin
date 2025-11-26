@@ -67,7 +67,7 @@ const Users = () => {
 
   return (
     <section
-      className={`min-h-screen overflow-hidden container mx-auto pt-[110px] xl:pt-[70px] sm:pt-12 md:pt-16 pb-6 sm:pb-8 md:pb-10 px-10 md:px-0 pr-16 transition-all duration-300 ${
+      className={`min-h-screen overflow-hidden  pt-[120px] xl:pt-[70px] sm:pt-30 md:pt-33 pb-6 sm:pb-8 md:pb-10 pl-6 md:px-0 transition-all duration-300 ${
         theme === "dark"
           ? "bg-slate-800 text-white"
           : "bg-zinc-200 text-zinc-900"

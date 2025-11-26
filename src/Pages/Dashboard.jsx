@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   return (
     <section
-      className={`p-10 overflow-hidden w-screen lg:w-full pr-25 lg:pr-0 md:-ml-10 
+      className={`p-10 overflow-hidden w-screen lg:w-full pr-22 lg:pr-0 lg:-ml-5 
         ${theme === 'dark' ? 'bg-slate-800 text-white' : 'bg-zinc-200 text-black'}
         `}
     >
