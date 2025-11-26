@@ -1,4 +1,4 @@
-# ShopBuy Admin Dashboard 🛒📊
+# ShopBuy Admin Dashboard 🛒
 
 The **ShopBuy Admin Dashboard** is a responsive and performance-optimized admin interface built with **React + Vite**. It features dashboards, analytics, e-commerce management, inventory pages, and a modern UI built with TailwindCSS.
 This project also helped me understand **React.lazy**, **ContextAPI**, and real-world app structure while solving performance and state management challenges.
@@ -80,7 +80,7 @@ This dashboard helped me:
 It represents one of the biggest jumps in my frontend development growth.
 
 ---
-
+```jsx
 ### **Project Structure**
 ShopBuy-Admin/
 │── src/
@@ -95,9 +95,12 @@ ShopBuy-Admin/
 │
 ├── package.json
 └── vite.config.js
+```
 
 ### **Installation**
-git clone https://github.com/aghoghoogbotor18/shopbuy-admin.git
+```jsx
+git clone https://github.com/AghoghoOgbotor18/ShopBuy-admin.git
 cd ShopBuy-Admin
 npm install
 npm run dev
+```
