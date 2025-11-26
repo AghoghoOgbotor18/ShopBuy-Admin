@@ -68,7 +68,7 @@ helped me manage dark/light mode without prop drilling and understand global sta
 --- 
 
 
-### **Why this project matters**
+### Why this project matters
 
 This dashboard helped me:
 -Master code-splitting with React.lazy
@@ -80,8 +80,9 @@ This dashboard helped me:
 It represents one of the biggest jumps in my frontend development growth.
 
 ---
+
+### Project Structure
 ```jsx
-### **Project Structure**
 ShopBuy-Admin/
 │── src/
 │   ├── Components/
@@ -97,7 +98,9 @@ ShopBuy-Admin/
 └── vite.config.js
 ```
 
-### **Installation**
+---
+
+### Installation
 ```jsx
 git clone https://github.com/AghoghoOgbotor18/ShopBuy-admin.git
 cd ShopBuy-Admin
