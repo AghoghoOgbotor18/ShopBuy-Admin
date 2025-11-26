@@ -76,7 +76,7 @@ const Transactions = () => {
   }, []);
 
   return (
-    <section className={`min-h-screen pt-[110px] md:pt-[120px] xl:pt-[70px] pb-10 transition-all duration-300 ${
+    <section className={`min-h-screen overflow-hidden pt-[110px] md:pt-[120px] xl:pt-[70px] pb-10 transition-all duration-300 ${
         theme === "dark"
           ? "bg-slate-800 text-white"
           : "bg-zinc-200 text-zinc-900"
@@ -121,7 +121,7 @@ const Transactions = () => {
             >
                 <table className="min-w-full text-sm">
                 <thead
-                    className={`text-left border-b ${
+                    className={`hidden lg:table-header-group text-left border-b ${
                     theme === "dark" ? "border-slate-800" : "border-gray-200"
                     }`}
                 >
@@ -133,40 +133,50 @@ const Transactions = () => {
                     <th className="p-4 text-center">Status</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="block lg:table-row-group">
                     {filtered.map((txn) => (
                     <tr
                         key={txn.id}
-                        className={`border-b hover:bg-opacity-80 transition ${
+                        className={`block lg:table-row border-b lg:border-b mb-4 lg:mb-0 p-4 lg:p-0 rounded-lg lg:rounded-none hover:bg-opacity-80 transition ${
                         theme === "dark"
                             ? "border-slate-800 hover:bg-slate-800"
                             : "border-gray-100 hover:bg-gray-50"
                         }`}
                     >
-                        <td className="p-4 flex items-center gap-3">
-                        <img
-                            src={txn.image}
-                            alt={txn.name}
-                            className="w-10 h-10 rounded-full object-cover"
-                        />
-                        <div>
-                            <p className="font-medium">{txn.name}</p>
-                            <p className="text-xs text-gray-500">{txn.id}</p>
+                        <td className="block lg:table-cell p-0 lg:p-4 mb-3 lg:mb-0">
+                        <div className="flex items-center gap-3">
+                            <img
+                                src={txn.image}
+                                alt={txn.name}
+                                className="w-10 h-10 rounded-full object-cover"
+                            />
+                            <div>
+                                <p className="font-medium">{txn.name}</p>
+                                <p className="text-xs text-gray-500">{txn.id}</p>
+                            </div>
                         </div>
                         </td>
-                        <td className="p-4">{txn.email}</td>
-                        <td className="p-4 font-semibold">
-                        ₦{txn.amount.toLocaleString()}
+                        <td className="block lg:table-cell p-0 lg:p-4 mb-2 lg:mb-0">
+                            <span className="lg:hidden font-extrabold">Email: </span>
+                            {txn.email}
                         </td>
-                        <td className="p-4">{txn.date}</td>
-                        <td className="p-4 text-center">
-                        <span
-                            className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
-                            txn.status
-                            )}`}
-                        >
-                            {txn.status}
-                        </span>
+                        <td className="block lg:table-cell p-0 lg:p-4 mb-2 lg:mb-0 font-semibold">
+                            <span className="lg:hidden font-extrabold">Amount: </span>
+                            ₦{txn.amount.toLocaleString()}
+                        </td>
+                        <td className="block lg:table-cell p-0 lg:p-4 mb-2 lg:mb-0">
+                            <span className="lg:hidden font-extrabold">Date: </span>
+                            {txn.date}
+                        </td>
+                        <td className="block lg:table-cell p-0 lg:p-4 lg:text-center">
+                            <span className="lg:hidden font-extrabold">Status: </span>
+                            <span
+                                className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                                txn.status
+                                )}`}
+                            >
+                                {txn.status}
+                            </span>
                         </td>
                     </tr>
                     ))}

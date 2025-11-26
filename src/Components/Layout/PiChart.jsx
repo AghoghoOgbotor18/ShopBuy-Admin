@@ -37,7 +37,7 @@ const PiChart = () => {
     <div
       className={`${
         theme === "dark" ? "bg-slate-950 text-white" : "bg-white"
-      } p-5 rounded-xl shadow-lg w-full max-w-sm`}
+      } p-5 rounded-xl shadow-lg w-full`}
     >
       <h2 className="text-lg font-semibold mb-1">Sales by Category</h2>
       <p className="text-gray-400 text-sm mb-4">Product distribution</p>

@@ -15,33 +15,33 @@ const Reviews = () => {
   const {theme} = useTheme();
 
   return (
-    <section className="flex flex-col md:flex-row items-start ml-4 w-[94%] gap-3 mt-4">
+    <section className="flex flex-col lg:flex-row items-start w-full gap-4">
       {/* Left section - Reviews */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         viewport={{ once: true }}
-        className={`${theme === "dark" ? "bg-slate-950 text-white" : "bg-white text-black"} flex-1 rounded-md p-4`}
+        className={`${theme === "dark" ? "bg-slate-950 text-white" : "bg-white text-black"} w-full lg:flex-1 rounded-lg p-4 md:p-6 shadow-lg`}
       >
-        <div className="flex justify-between">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
           <div>
             <p className="font-semibold text-lg">Top Products</p>
-            <p className="text-gray-700 pb-5">Best Performing Products</p>
+            <p className="text-sm text-gray-500">Best Performing Products</p>
           </div>
-          <p className="text-blue-700 text-xs cursor-pointer">View All</p>
+          <p className="text-blue-600 text-sm cursor-pointer hover:underline">View All</p>
         </div>
 
-        <div>
+        <div className="space-y-3">
           {items.map((item, index) => (
-            <div key={index} className="py-3">
+            <div key={index} className={`py-3 border-b last:border-b-0 ${theme === "dark" ? "border-slate-800" : "border-gray-200"}`}>
               <div className="flex justify-between items-center">
                 <div>
                   <p className="font-semibold">{item.product}</p>
-                  <p className="text-xs text-gray-600">{item.series}</p>
+                  <p className="text-xs text-gray-500">{item.series}</p>
                 </div>
-                <div className="flex flex-col justify-center items-center">
-                  <p className="font-semibold">&#8358;{item.amount}</p>
+                <div className="flex flex-col items-end">
+                  <p className="font-semibold">₦{item.amount.toLocaleString()}</p>
                   <p
                     className={`${
                       item.stock.includes('-') ? 'text-red-600' : 'text-green-500'
@@ -61,9 +61,9 @@ const Reviews = () => {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 1.6, ease: "easeOut" }}
+        transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="flex-1"
+        className="w-full lg:flex-1"
       >
         <Activity />
       </motion.div>

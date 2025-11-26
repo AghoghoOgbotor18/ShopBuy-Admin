@@ -142,7 +142,7 @@ const Chatroom = () => {
 
   return (
     <section
-      className={`min-h-screen pt-[110px] md:pt-[120px] xl:pt-[70px] pb-10 transition-all duration-300 ${
+      className={`min-h-screen overflow-hidden pt-[110px] md:pt-[120px] xl:pt-[70px] pb-10 transition-all duration-300 ${
         theme === "dark"
           ? "bg-slate-800 text-white"
           : "bg-zinc-200 text-zinc-900"
@@ -156,10 +156,12 @@ const Chatroom = () => {
           theme === "dark" ? "bg-slate-950" : "bg-white"
         }`}
       >
-        <div className="container mx-auto relative min-h-screen">
+        <div className="container mx-auto relative">
           <div className="flex flex-col justify-between gap-10">
             {/* Header */}
-            <div className="py-3 px-2 absolute top-0 w-full shadow-lg flex justify-between items-center gap-2">
+            <div className={`py-3 px-2 absolute top-0 w-full shadow-lg flex justify-between items-center gap-2 ${
+          theme === "dark" ? "bg-slate-950/20" : "bg-zinc-100/50"
+        }`}>
               <Link to="/messages">
                 <div className="flex gap-2 items-center cursor-pointer hover:text-zinc-400">
                   <FaChevronLeft size={17} />
@@ -235,7 +237,7 @@ const Chatroom = () => {
                     className={`w-8 h-8 p-2 shadow-lg rounded-full cursor-pointer ${
                       theme === "dark"
                         ? "bg-slate-800 text-white hover:bg-slate-700"
-                        : "bg-white text-black"
+                        : "bg-zinc-100 text-black"
                     }`}
                   />
                   </button>
@@ -250,7 +252,7 @@ const Chatroom = () => {
                       ${
                         theme === "dark"
                           ? "bg-slate-800 text-white"
-                          : "bg-white text-black"
+                          : "bg-zinc-100 text-black"
                       }`}
                     onInput={(e) => {
                       e.target.style.height = "3rem"; // reset
@@ -263,7 +265,7 @@ const Chatroom = () => {
                       className={`w-8 h-8 p-2 shadow-lg rounded-full cursor-pointer ${
                         theme === "dark"
                           ? "bg-slate-800 text-white hover:bg-slate-700"
-                          : "bg-white text-black"
+                          : "bg-zinc-100 text-black"
                       }`}
                     />
                   </button>

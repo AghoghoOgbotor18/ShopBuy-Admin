@@ -20,11 +20,11 @@ const Chart = () => {
   const { theme } = useTheme();
 
   return (
-    <section className="mt-10 mx-5 flex flex-row overflow-hidden">
+    <section className="mt-10 flex flex-row overflow-hidden w-full">
       <div
         className={`${
           theme === "dark" ? "bg-slate-950 text-white" : "bg-white"
-        } rounded-md p-5 flex flex-col gap-16 w-[97%]`}
+        } rounded-md p-5 flex flex-col gap-16 w-full`}
       >
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-center md:justify-between gap-5 md:gap-2 items-center">
@@ -35,7 +35,7 @@ const Chart = () => {
 
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-gradient-to-r from-blue-800 to-purple-800 rounded-full"></div>
+              <div className="w-3 h-3 bg-linear-to-r from-blue-800 to-purple-800 rounded-full"></div>
               <p>Revenue</p>
             </div>
             <div className="flex items-center gap-1">
@@ -65,13 +65,13 @@ const Chart = () => {
                     {/* Revenue bar */}
                     <div
                       style={{ height: `${item.revenue * 2}px` }}
-                      className="w-6 bg-gradient-to-b from-blue-900 to-purple-800 rounded-t-sm"
+                      className="w-6 bg-linear-to-b from-blue-900 to-purple-800 rounded-t-sm"
                     ></div>
 
                     {/* Expenses bar */}
                     <div
                       style={{ height: `${item.expenses * 2}px` }}
-                      className="w-6 bg-zinc-600 rounded-t-sm"
+                      className="w-6 bg-zinc-500 rounded-t-sm"
                     ></div>
                   </div>
                   <p className="text-xs mt-2">{item.month}</p>

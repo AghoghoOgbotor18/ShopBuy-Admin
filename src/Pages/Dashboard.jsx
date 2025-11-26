@@ -9,6 +9,7 @@ import { useOpen } from '../Components/Context/OpenContext';
 
 const Dashboard = () => {
   const { theme } = useTheme();
+  const {isOpen} = useOpen();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -16,11 +17,12 @@ const Dashboard = () => {
 
   return (
     <section
-      className={`min-h-screen transition-all duration-300 
+      className={`p-10 overflow-hidden w-screen lg:w-full pr-25 lg:pr-0 md:-ml-10 
         ${theme === 'dark' ? 'bg-slate-800 text-white' : 'bg-zinc-200 text-black'}
-        pt-[110px] md:pt-[120px] xl:pt-[70px] pb-10 px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12`}
+        `}
     >
-      {/* Overview */}
+      <div className=''>
+        {/* Overview */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -62,6 +64,7 @@ const Dashboard = () => {
       >
         <Reviews />
       </motion.div>
+      </div>
     </section>
   );
 };

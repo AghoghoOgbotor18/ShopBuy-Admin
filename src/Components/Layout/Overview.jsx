@@ -1,6 +1,6 @@
 import React from "react";
 import { FiArrowDownRight, FiArrowUpRight, FiEye, FiUsers } from 'react-icons/fi';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaMoneyBill, FaShoppingCart } from 'react-icons/fa';
 import { motion } from "framer-motion";
 import { useTheme } from "../Context/ThemeContext";
 
@@ -8,15 +8,18 @@ const Overview = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="w-full max-w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
-        
-        {/* Card Template */}
+    <div className=" overflow-hidden mt-25 md:mt-27 xl:mt-15">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
+
         {[
           {
             title: "Total Revenue",
             value: "₦124,563",
-            icon: "₦",
+            icon: (
+              <FaMoneyBill
+                className="bg-green-200/50 text-green-600 p-2 rounded-full size-8 sm:size-10"
+              />
+            ),
             progress: "w-3/4",
             trend: "+12.3%",
             trendColor: "text-green-400",
@@ -26,7 +29,11 @@ const Overview = () => {
           {
             title: "Total Orders",
             value: "2,847",
-            icon: <FaShoppingCart size={40} className="bg-purple-200/50 w-fit text-purple-600 py-3 px-3 rounded-full" />,
+            icon: (
+              <FaShoppingCart
+                className="bg-purple-200/50 text-purple-600 p-2 rounded-full size-8 sm:size-10"
+              />
+            ),
             progress: "w-11/12",
             trend: "+18.8%",
             trendColor: "text-green-400",
@@ -36,7 +43,11 @@ const Overview = () => {
           {
             title: "Page Views",
             value: "45,892",
-            icon: <FiEye size={40} className="bg-orange-200/50 w-fit text-orange-600 py-3 px-3 rounded-full" />,
+            icon: (
+              <FiEye
+                className="bg-orange-200/50 text-orange-600 p-2 rounded-full size-8 sm:size-10"
+              />
+            ),
             progress: "w-1/2",
             trend: "-5.1%",
             trendColor: "text-red-400",
@@ -46,7 +57,11 @@ const Overview = () => {
           {
             title: "Active Users",
             value: "8,549",
-            icon: <FiUsers size={40} className="bg-blue-200/50 w-fit text-blue-600 py-3 px-3 rounded-full" />,
+            icon: (
+              <FiUsers
+                className="bg-blue-200/50 text-blue-600 p-2 rounded-full size-8 sm:size-10"
+              />
+            ),
             progress: "w-2/3",
             trend: "+12.3%",
             trendColor: "text-green-400",
@@ -61,21 +76,23 @@ const Overview = () => {
             transition={{ duration: 0.6, delay: 0.2 * (idx + 1) }}
             className={`${
               theme === "dark" ? "bg-slate-950 text-white" : "bg-white"
-            } w-full rounded-md cursor-pointer p-4 flex flex-col gap-4`}
+            } w-full min-w-0 rounded-md cursor-pointer p-4 flex flex-col gap-4`}
           >
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <p>{card.title}</p>
-                <h3>{card.value}</h3>
+            <div className="flex items-center justify-between gap-3 min-w-0">
+              <div className="min-w-0">
+                <p className="truncate">{card.title}</p>
+                <h3 className="truncate">{card.value}</h3>
               </div>
               {card.icon}
             </div>
-            <div className="flex items-center gap-1">
+
+            <div className="flex items-center gap-1 min-w-0">
               {card.trendIcon}
-              <p>
+              <p className="truncate">
                 <span className={`${card.trendColor}`}>{card.trend}</span> vs last month
               </p>
             </div>
+
             <div className="bg-zinc-300 h-2 rounded-md">
               <div className={`${card.progressColor} h-2 rounded-md ${card.progress}`}></div>
             </div>

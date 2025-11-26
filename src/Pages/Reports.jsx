@@ -29,7 +29,7 @@ const Reports = () => {
       : reportData.filter((r) => r.type === filter);
 
   return (
-    <section className={`min-h-screen pt-[110px] md:pt-[120px] xl:pt-[70px] pb-10 transition-all duration-300 ${
+    <section className={`min-h-screen overflow-hidden pt-[110px] md:pt-[120px] xl:pt-[70px] pb-10 transition-all duration-300 ${
         theme === "dark"
           ? "bg-slate-800 text-white"
           : "bg-zinc-200 text-zinc-900"
@@ -115,7 +115,7 @@ const Reports = () => {
       >
         <table className="w-full text-sm">
           <thead
-            className={`${
+            className={`hidden lg:table-header-group ${
               theme === "dark"
                 ? "bg-slate-800 text-gray-300"
                 : "bg-gray-100 text-gray-700"
@@ -129,22 +129,34 @@ const Reports = () => {
               <th className="text-left px-4 py-3">Status</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="block lg:table-row-group">
             {filteredReports.map((report) => (
               <tr
                 key={report.id}
-                className={`border-t ${
+                className={`block lg:table-row border-t lg:border-t mb-4 lg:mb-0 p-4 lg:p-0 rounded-lg lg:rounded-none ${
                   theme === "dark"
                     ? "border-slate-800 hover:bg-slate-800"
                     : "border-gray-100 hover:bg-gray-50"
                 }`}
               >
-                <td className="px-4 py-3 text-blue-500">{report.id}</td>
-                <td className="px-4 py-3">{report.type}</td>
-                <td className="px-4 py-3">{report.date}</td>
-                <td className="px-4 py-3">₦{report.total.toLocaleString()}</td>
+                <td className="block lg:table-cell px-0 lg:px-4 py-2 lg:py-3 text-blue-500">
+                  <span className="lg:hidden font-extrabold">Report ID: </span>
+                  {report.id}
+                </td>
+                <td className="block lg:table-cell px-0 lg:px-4 py-2 lg:py-3">
+                  <span className="lg:hidden font-extrabold">Type: </span>
+                  {report.type}
+                </td>
+                <td className="block lg:table-cell px-0 lg:px-4 py-2 lg:py-3">
+                  <span className="lg:hidden font-extrabold">Date: </span>
+                  {report.date}
+                </td>
+                <td className="block lg:table-cell px-0 lg:px-4 py-2 lg:py-3">
+                  <span className="lg:hidden font-extrabold">Total: </span>
+                  ₦{report.total.toLocaleString()}
+                </td>
                 <td
-                  className={`px-4 py-3 font-medium ${
+                  className={`block lg:table-cell px-0 lg:px-4 py-2 lg:py-3 font-medium ${
                     report.status === "Completed"
                       ? "text-green-500"
                       : report.status === "Pending"
@@ -152,6 +164,7 @@ const Reports = () => {
                       : "text-red-500"
                   }`}
                 >
+                  <span className="lg:hidden font-extrabold text-gray-400">Status: </span>
                   {report.status}
                 </td>
               </tr>

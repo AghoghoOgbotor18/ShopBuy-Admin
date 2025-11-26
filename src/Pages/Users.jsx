@@ -67,7 +67,7 @@ const Users = () => {
 
   return (
     <section
-      className={`min-h-screen w-fit container mx-auto pt-[110px] md:pt-[120px] xl:pt-[70px] sm:pt-12 md:pt-16 pb-6 sm:pb-8 md:pb-10 px-10 md:px-0 pr-16 transition-all duration-300 ${
+      className={`min-h-screen overflow-hidden container mx-auto pt-[110px] xl:pt-[70px] sm:pt-12 md:pt-16 pb-6 sm:pb-8 md:pb-10 px-10 md:px-0 pr-16 transition-all duration-300 ${
         theme === "dark"
           ? "bg-slate-800 text-white"
           : "bg-zinc-200 text-zinc-900"
@@ -77,7 +77,7 @@ const Users = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`mt-3 w-auto sm:mt-4 md:mt-5 p-3 sm:p-5 md:p-6 rounded-xl shadow-lg ${
+        className={`mt-3 sm:mt-4 md:mt-5 p-3 sm:p-5 md:p-6 rounded-xl shadow-lg ${
           theme === "dark" ? "bg-slate-950" : "bg-white"
         }`}
       >
@@ -91,20 +91,19 @@ const Users = () => {
               Manage all registered users
             </p>
           </div>
-          <button className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded-lg bg-gradient-to-r from-blue-700 to-purple-700 text-white text-sm cursor-pointer hover:opacity-90 transition">
+          <button className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded-lg bg-linear-to-r from-blue-700 to-purple-700 text-white text-sm cursor-pointer hover:opacity-90 transition">
             + Add User
           </button>
         </div>
 
         {/* Table Wrapper */}
+        
         <div className="overflow-x-auto rounded-lg -mx-3 sm:mx-0 px-3 sm:px-0">
           <table className="min-w-full border-collapse text-xs sm:text-sm md:text-base">
-            <thead>
+            <thead className="hidden lg:table-header-group">
               <tr
                 className={`text-left border-b ${
-                  theme === "dark"
-                    ? "border-zinc-700"
-                    : "border-zinc-300"
+                  theme === "dark" ? "border-zinc-700" : "border-zinc-300"
                 }`}
               >
                 <th className="py-2 sm:py-3 px-2 sm:px-3 md:px-4 whitespace-nowrap">User</th>
@@ -115,44 +114,45 @@ const Users = () => {
               </tr>
             </thead>
 
-            <tbody>
+            <tbody className="block md:table-row-group">
               {users.map((user) => (
                 <tr
                   key={user.id}
-                  className={`border-b ${
+                  className={`block lg:table-row border-b lg:border-b-0 mb-4 lg:mb-0 p-4 lg:p-0 rounded-lg ${
                     theme === "dark"
                       ? "border-zinc-700 hover:bg-slate-900"
                       : "border-zinc-200 hover:bg-zinc-100"
                   } transition`}
                 >
                   {/* USER */}
-                  <td className="py-2 sm:py-3 px-2 sm:px-3 md:px-4">
-                    <div className="flex items-center gap-2 sm:gap-3 whitespace-nowrap">
+                  <td className="block lg:table-cell py-2 lg:py-2 px-0 lg:px-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <img
                         src={user.avatar}
                         alt={user.name}
-                        className="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full"
+                        className="w-10 h-10 rounded-full"
                       />
-                      <span className="font-medium text-xs sm:text-sm md:text-base">
-                        {user.name}
-                      </span>
+                      <div className="flex-1">
+                        <span className="font-medium block">{user.name}</span>
+                        <span className="lg:hidden block text-gray-400 text-sm">{user.role}</span>
+                      </div>
                     </div>
                   </td>
 
                   {/* EMAIL */}
-                  <td className="py-2 sm:py-3 px-2 sm:px-3 md:px-4 text-xs sm:text-sm">
+                  <td className="block lg:table-cell py-2 lg:py-2 px-0 lg:px-3">
                     <div className="flex items-center gap-1.5 sm:gap-2">
+                      <span className="lg:hidden font-extrabold">Email:</span>
                       <FiMail className="text-blue-500" />
-                      <span className="truncate max-w-[100px] sm:max-w-[150px] md:max-w-none">
-                        {user.email}
-                      </span>
+                      <span>{user.email}</span>
                     </div>
                   </td>
 
                   {/* STATUS */}
-                  <td className="py-2 sm:py-3 px-2 sm:px-3 md:px-4">
+                  <td className="block lg:table-cell py-2 lg:py-2 px-0 lg:px-3">
+                    <span className="lg:hidden font-extrabold">Status: </span>
                     <span
-                      className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium ${
+                      className={`px-2 py-1 rounded-full text-xs font-medium ${
                         user.status === "Active"
                           ? "bg-green-500/20 text-green-500"
                           : user.status === "Pending"
@@ -160,24 +160,31 @@ const Users = () => {
                           : "bg-red-500/20 text-red-500"
                       }`}
                     >
+                      
                       {user.status}
                     </span>
                   </td>
 
                   {/* PHONE */}
-                  <td className="py-2 sm:py-3 px-2 sm:px-3 md:px-4 text-xs sm:text-sm whitespace-nowrap">
+                  <td className="block lg:table-cell py-2 lg:py-2 px-0 lg:px-3">
                     <div className="flex items-center gap-1.5 sm:gap-2">
-                      <FiPhone className="text-green-500" /> {user.phone}
+                      <span className="lg:hidden font-extrabold">Phone:</span>
+                      <FiPhone className="text-green-500" />
+                      {user.phone}
                     </div>
                   </td>
 
                   {/* ROLE */}
-                  <td className="py-2 sm:py-3 px-2 sm:px-3 md:px-4 whitespace-nowrap text-xs sm:text-sm md:text-base">{user.role}</td>
+                  <td className="hidden lg:block lg:table-cell py-2 lg:py-2 px-0 md:px-3 ">
+                    <span className="md:hidden font-extrabold">Role: </span>
+                    {user.role}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+
       </motion.div>
     </section>
   );

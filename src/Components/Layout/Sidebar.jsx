@@ -9,7 +9,7 @@ import { useOpen } from "../Context/OpenContext";
 const Sidebar = () => {
 
     const {isOpen, toggleOpen} = useOpen();
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
     const [search, setSearch] = useState("");
     const handleSearch = (e) => {
         setSearch(e.target.value)
@@ -18,7 +18,7 @@ const Sidebar = () => {
     const {theme, toggleTheme} = useTheme();
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        const handleResize = () => setIsMobile(window.innerWidth < 1024);
         window.addEventListener("resize", handleResize);
         return () => removeEventListener("resize", handleResize);
     }, []);
@@ -165,9 +165,9 @@ const Sidebar = () => {
 
 
                 {/*  slide in and slide out side bar */}
-                <div className={`min-h-screen absolute shadow-2xl top-30 md:top-18 left-0 text-black/80 z-5 rounded text-sm w-1/5 transition-all duration-300
+                <div className={`min-h-screen absolute shadow-2xl top-30 md:top-35 lg:top-[150px] xl:top-[90px] left-0 text-black/80 z-5 rounded text-sm w-1/5 transition-all duration-300
                      ${theme === "dark" ? "bg-slate-950 text-white" : "bg-white"}
-                      ${isOpen ? "w-full md:w-60" : "w-18 overflow-x-hidden"}`}>
+                      ${isOpen ? "w-full lg:w-60" : "w-18 overflow-x-hidden"}`}>
                     <ul className="container mx-auto p-5 flex flex-col justify-start gap-4">
                         {[
                             { to: "/", label: "Dashboard", icon: <FaThLarge size={20} /> },

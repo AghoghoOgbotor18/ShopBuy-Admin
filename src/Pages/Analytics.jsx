@@ -43,7 +43,7 @@ const Analytics = () => {
     return (
         <section
         ref={sectionRef}
-        className={`min-h-screen pt-[110px] md:pt-[120px] xl:pt-[70px] pb-10 px-4 md:px-5 pr-2 transition-all duration-300 ${
+        className={`min-h-screen overflow-hidden pt-[110px] md:pt-[120px] xl:pt-[70px] pb-10 px-4 md:px-5 pr-2 transition-all duration-300 ${
         theme === "dark"
           ? "bg-slate-800 text-white"
           : "bg-zinc-200 text-zinc-900"
