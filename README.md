@@ -46,9 +46,9 @@ const Analytics = React.lazy(() => import("./Pages/Analytics"));
 const Inventory = React.lazy(() => import("./Pages/Inventory"));
 
 ```
-### **2. Code Splitting with React.lazy**
+### **2. Understanding ContextAPI**
 Understanding ContextAPI Through ThemeContext and OpenContext
-I fully learned how ContextAPI works by building a global ThemeContext and an OpenCOntext for sidebar open and close:
+I fully learned how ContextAPI works by building a global ThemeContext for light/dark theme and an OpenContext for sidebar open and close:
 
 ```jsx
 const ThemeContext = createContext();
